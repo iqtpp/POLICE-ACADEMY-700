@@ -1,0 +1,378 @@
+import { LeadershipOfficer, AcademyStat, QuickFeatureCard, AcademyRule, AcademyMember, RecruitmentApplication, Trainee, ContactTicket } from '../types';
+import officerAvatar from '../assets/images/police_officer_avatar_1785941245160.jpg';
+
+export const INITIAL_LEADERSHIP: LeadershipOfficer[] = [
+  {
+    id: 'off-1',
+    title: 'Police Academy Commander',
+    titleAr: 'Police Academy Commander',
+    name: 'Commander',
+    role: 'Police Academy Commander',
+    rank: 'Police Academy Commander',
+    stars: 5,
+    avatarUrl: officerAvatar,
+    badgeNumber: 'PA-01',
+    department: 'القيادة العامة',
+    bio: 'صاحب الخبرة الممتدة في التخطيط الأمني وقيادة الكوادر الضابطة.'
+  },
+  {
+    id: 'off-2',
+    title: 'Police Academy Deputy',
+    titleAr: 'Police Academy Deputy',
+    name: 'Deputy',
+    role: 'Police Academy Deputy',
+    rank: 'Police Academy Deputy',
+    stars: 5,
+    avatarUrl: officerAvatar,
+    badgeNumber: 'PA-02',
+    department: 'إدارة العمليات',
+    bio: 'المشرف العام على المناهج التدريبية والاختبارات الميدانية.'
+  },
+  {
+    id: 'off-3',
+    title: 'Police Academy Supervisor',
+    titleAr: 'Police Academy Supervisor',
+    name: 'Supervisor',
+    role: 'Police Academy Supervisor',
+    rank: 'Police Academy Supervisor',
+    stars: 4,
+    avatarUrl: officerAvatar,
+    badgeNumber: 'PA-03',
+    department: 'التفتيش والمتابعة',
+    bio: 'المسؤول عن متابعة انضباط المستجدين وضبط جودة التدريب.'
+  }
+];
+
+export const INITIAL_STATS: AcademyStat[] = [
+  {
+    id: 'stat-1',
+    label: 'إجمالي المتدربين',
+    value: 128,
+    iconName: 'GraduationCap',
+    description: 'متدرب مقيد في مختلف الدفوعات التدريبية'
+  },
+  {
+    id: 'stat-2',
+    label: 'أعضاء الأكاديمية',
+    value: 45,
+    iconName: 'Users',
+    description: 'كادر تدريبي وإداري ضابط'
+  },
+  {
+    id: 'stat-3',
+    label: 'الخريجين هذا الشهر',
+    value: 12,
+    iconName: 'Award',
+    description: 'خريج أتموا الدورة التأهيلية بنجاح'
+  }
+];
+
+export const DEFAULT_SITE_SETTINGS = {
+  siteName: 'أكاديمية الشرطة',
+  siteSubtitle: 'POLICE ACADEMY',
+  heroBadgeText: 'الصرح الأمني القيادي الأول',
+  heroHeadline: 'POLICE ACADEMY',
+  heroSubtitle: 'نصنع القادة .. تحمي المستقبل',
+  heroDescription: 'تلتزم أكاديمية الشرطة بتدريب وتطوير أفضل الكوادر الأمنية وفق أعلى المعايير المهنية والانضباطية.',
+  recruitmentOpen: true,
+  recruitmentNotice: 'التقديم مفتوح حالياً للدفعة الجديدة من المتدربين.',
+  contactDiscordUrl: 'https://discord.gg',
+  contactEmail: 'info@police-academy.com',
+  autoReplyEnabled: true,
+  autoReplyTemplate: 'مرحباً {NAME}، تم استلام استفسارك بنجاح عبر البوابة الإلكترونية لأكاديمية الشرطة برقم تذكرة مرجعي ({TICKET_ID}). سيقوم فريق الدعم أو مشرفي الأكاديمية بمراجعة طلبك والرد عليك عبر الديسكورد في أسرع وقت. للتواصل المباشر يرجى التواصل معنا عبر الديسكورد: iqtpp أو al3mri0201.',
+};
+
+export const QUICK_FEATURE_CARDS: QuickFeatureCard[] = [
+  {
+    id: 'about',
+    title: 'عن الأكاديمية',
+    description: 'تعرف على رسالتنا وأهدافنا ورؤيتنا المستقبلية',
+    iconName: 'ShieldCheck'
+  },
+  {
+    id: 'rules',
+    title: 'القوانين',
+    description: 'إطلع على القوانين واللوائح المنظمة للأكاديمية',
+    iconName: 'Gavel'
+  },
+  {
+    id: 'apply',
+    title: 'التقديم',
+    description: 'انضم إلينا وإبدأ رحلتك نحو الاحتراف',
+    iconName: 'ClipboardList'
+  },
+  {
+    id: 'members',
+    title: 'أعضاء الأكاديمية',
+    description: 'تعرف على جميع أعضاء الأكاديمية وكادرها',
+    iconName: 'Users'
+  },
+  {
+    id: 'trainees',
+    title: 'سجل المتدربين والتقارير',
+    description: 'عرض قائمة المتدربين والتقارير والتقييمات الـ PDF',
+    iconName: 'ClipboardList'
+  },
+  {
+    id: 'leadership',
+    title: 'إدارة الأكاديمية',
+    description: 'التعرف على إدارة الأكاديمية والهيكل التنظيمي',
+    iconName: 'BadgeCheck'
+  }
+];
+
+export const INITIAL_RULES: AcademyRule[] = [
+  {
+    id: 'r-1',
+    title: 'احترام السلسلة القيادية والرتب العسكرية',
+    category: 'الانضباط',
+    content: 'يجب على جميع المتدربين والأعضاء الالتزام التام بالتعليمات الصادرة من الرتب الأعلى وعدم تجاوز السلسلة القيادية تحت أي ظرف.',
+    importance: 'عالي'
+  },
+  {
+    id: 'r-2',
+    title: 'الالتزام بالزي الرسمي والتحلي بالمهنية',
+    category: 'عامة',
+    content: 'يمنع الدخول للتدريبات أو الميدان بدون الزي الرسمي المخصص لكل رتبة، مع مراعاة المظهر العام والتعامل باللياقة والمهنية.',
+    importance: 'عالي'
+  },
+  {
+    id: 'r-3',
+    title: 'الحفاظ على سرية المعلومات والتعميمات',
+    category: 'الانضباط',
+    content: 'يمنع تسريب أي خطط تكتيكية، تعميمات داخلية، أو بيانات خاصة بالأكاديمية لأطراف خارجية تحت طائلة الفصل الفوري.',
+    importance: 'عالي'
+  },
+  {
+    id: 'r-4',
+    title: 'حضور الحصص التدريبية والاختبارات الميدانية',
+    category: 'الميدان',
+    content: 'نسبة الحضور المسموح بها هي 85% كحد أدنى لاجتياز الدورة، وفي حال التغيب بدون عذر رسمي يتم توجيه إنذار رسمي.',
+    importance: 'متوسط'
+  },
+  {
+    id: 'r-5',
+    title: 'قواعد استخدام الأسلحة والمعدات الأمنية',
+    category: 'الميدان',
+    content: 'لا يُسمح بسحب أو تجربة الأسلحة إلا في ميادين الرماية المخصصة وتحت إشراف مباشر من مدرب معتمد.',
+    importance: 'تنبيه'
+  }
+];
+
+export const INITIAL_MEMBERS: AcademyMember[] = [
+  {
+    id: 'm-1',
+    name: 'سعود الحربي',
+    rank: 'Police Academy Commander',
+    rankLevel: 1,
+    badgeNumber: '#101',
+    department: 'القيادة العامة',
+    joinDate: '2023-01-15',
+    status: 'نشط',
+    avatarUrl: officerAvatar,
+  },
+  {
+    id: 'm-2',
+    name: 'عبدالله العتيبي',
+    rank: 'Police Academy Deputy',
+    rankLevel: 2,
+    badgeNumber: '#102',
+    department: 'القيادة العامة',
+    joinDate: '2023-03-20',
+    status: 'نشط',
+    avatarUrl: officerAvatar,
+  },
+  {
+    id: 'm-3',
+    name: 'خالد الشمري',
+    rank: 'Police Academy Supervisor',
+    rankLevel: 3,
+    badgeNumber: '#103',
+    department: 'المشرف العام',
+    joinDate: '2023-05-10',
+    status: 'نشط',
+    avatarUrl: officerAvatar,
+  },
+  {
+    id: 'm-4',
+    name: 'محمد القحطاني',
+    rank: 'Police Academy Management',
+    rankLevel: 4,
+    badgeNumber: '#104',
+    department: 'إدارة الأكاديمية',
+    joinDate: '2023-08-01',
+    status: 'نشط',
+    avatarUrl: officerAvatar,
+  },
+  {
+    id: 'm-5',
+    name: 'فيصل المطيري',
+    rank: 'Police Academy',
+    rankLevel: 5,
+    badgeNumber: '#105',
+    department: 'عضو أكاديمية',
+    joinDate: '2023-09-12',
+    status: 'مترقي حديثاً',
+    avatarUrl: officerAvatar,
+  },
+  {
+    id: 'm-6',
+    name: 'فهد الدوسري',
+    rank: 'Police Academy',
+    rankLevel: 6,
+    badgeNumber: '#106',
+    department: 'شؤون القبول',
+    joinDate: '2024-01-10',
+    status: 'نشط',
+    avatarUrl: officerAvatar,
+  },
+  {
+    id: 'm-7',
+    name: 'عمر الزهراني',
+    rank: 'Police Academy',
+    rankLevel: 7,
+    badgeNumber: '#107',
+    department: 'جناح التدريب',
+    joinDate: '2024-02-15',
+    status: 'نشط',
+    avatarUrl: officerAvatar,
+  },
+  {
+    id: 'm-8',
+    name: 'سلمان الشهري',
+    rank: 'Police Academy Management',
+    rankLevel: 8,
+    badgeNumber: '#108',
+    department: 'إدارة الأكاديمية',
+    joinDate: '2024-04-01',
+    status: 'في إجازة',
+    avatarUrl: officerAvatar,
+  }
+];
+
+export const INITIAL_TRAINEES: Trainee[] = [
+  {
+    id: 'tr-101',
+    name: 'بدر بن خالد الفايز',
+    badgeNumber: 'TR-8801',
+    batch: 'الدفعة 14 - التكتيكية',
+    joinDate: '2026-06-01',
+    status: 'Cadet',
+    reports: [
+      {
+        id: 'rep-1',
+        traineeId: 'tr-101',
+        title: 'التقرير الميداني الأسبوعي - الأسبوع الأول',
+        category: 'تقرير ميداني اسبوعي',
+        date: '2026-07-20',
+        evaluator: 'المدرب العام',
+        score: '94/100',
+        pdfName: 'التقرير_الميداني_الأسبوعي_1_بدر.pdf',
+        notes: 'أظهر المتدرب دقة فائقة في المداهمات والتصويب والتعامل الميداني خلال الأسبوع.'
+      },
+      {
+        id: 'rep-2',
+        traineeId: 'tr-101',
+        title: 'تقرير أول أسبوع - انضباط وحضور',
+        category: 'تقرير اول اسبوع',
+        date: '2026-07-27',
+        evaluator: 'إدارة شؤون القبول والتدريب',
+        score: 'ممتاز (A+)',
+        pdfName: 'تقرير_أول_أسبوع_بدر.pdf',
+        notes: 'التزام تام بالانضباط الميداني واللوائح والزي الرسمي المعتمد.'
+      }
+    ]
+  },
+  {
+    id: 'tr-102',
+    name: 'مشاري بن ناصر الغامدي',
+    badgeNumber: 'TR-8802',
+    batch: 'الدفعة 14 - التكتيكية',
+    joinDate: '2026-06-01',
+    status: 'Solo Cadet',
+    reports: [
+      {
+        id: 'rep-3',
+        traineeId: 'tr-102',
+        title: 'التقرير الميداني الأسبوعي - تقييم الفردي Solo',
+        category: 'تقرير ميداني اسبوعي',
+        date: '2026-08-03',
+        evaluator: 'لجنة التقييم العليا',
+        score: '98/100',
+        pdfName: 'التقرير_الميداني_الأسبوعي_مشاري.pdf',
+        notes: 'اجتاز اختبارات القيادة الميدانية الفردية والتحركات باقتدار كـ Solo Cadet.'
+      }
+    ]
+  },
+  {
+    id: 'tr-103',
+    name: 'سلطان بن فهد الهاجري',
+    badgeNumber: 'TR-8803',
+    batch: 'الدفعة 15 - المستجدين',
+    joinDate: '2026-07-15',
+    status: 'Cadet',
+    reports: [
+      {
+        id: 'rep-4',
+        traineeId: 'tr-103',
+        title: 'تقرير أول أسبوع للمستجد',
+        category: 'تقرير اول اسبوع',
+        date: '2026-07-22',
+        evaluator: 'مدرب اللياقة والميدان',
+        score: '90/100',
+        pdfName: 'تقرير_أول_أسبوع_سلطان.pdf',
+        notes: 'جاهزية عالية ولياقة أمنية متميزة في التكتيك والانضباط.'
+      }
+    ]
+  }
+];
+
+export const INITIAL_APPLICATIONS: RecruitmentApplication[] = [
+  {
+    id: 'app-1001',
+    fullName: 'أحمد بن صالح',
+    age: 22,
+    discordId: 'ahmed_sp#1234',
+    gameId: 'PID-88492',
+    departmentPreference: 'جناح التدريب والتكتيك',
+    experience: 'خبرة سنتين في القطاعات الأمنية السابقة وقيادة الفرق الميدانية.',
+    whyJoin: 'أنظر للأكاديمية كصرح احترافي لبناء شخصية عسكرية منظمة وصقل مهاراتي القيادية.',
+    acceptedRules: true,
+    status: 'قيد المراجعة',
+    submittedAt: '2026-08-04 14:30'
+  },
+  {
+    id: 'app-1002',
+    fullName: 'تركي بن عبدالعزيز',
+    age: 24,
+    discordId: 'turki_police#9911',
+    gameId: 'PID-77301',
+    departmentPreference: 'إدارة العمليات والتفتيش',
+    experience: 'خبرة في الإدارة والشؤون القانونية وتطبيق اللوائح.',
+    whyJoin: 'الرغبة في المساهمة في تنظيم الضباط والتحقق من تطبيق لوائح الأكاديمية.',
+    acceptedRules: true,
+    status: 'مقبول مبدئياً',
+    submittedAt: '2026-08-03 19:15'
+  }
+];
+
+export const INITIAL_CONTACT_TICKETS: ContactTicket[] = [
+  {
+    id: 't-101',
+    senderName: 'محمد العتيبي',
+    contactInfo: 'mohammed_at@discord',
+    subject: 'استفسار عن القبول والتقديم',
+    message: 'السلام عليكم، متى يفتح القبول للدفعة القادمة وكيف يمكنني تجهيز المتطلبات؟',
+    createdAt: '2026-08-04 18:20',
+    status: 'جديد',
+  },
+  {
+    id: 't-102',
+    senderName: 'سعد القحطاني',
+    contactInfo: 'saad_q#1234',
+    subject: 'متابعة حالة طلب سابق',
+    message: 'استفسار بشأن التقديم وتحديد موعد المقابلة الميدانية.',
+    createdAt: '2026-08-03 11:45',
+    status: 'تم الرد',
+  }
+];

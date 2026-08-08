@@ -1,0 +1,8 @@
+{
+  "name": "Remix أكاديمية الشرطة - Police Academy",
+  "description": "الموقع الرسمي لأكاديمية الشرطة - التقديم، القوانين، إدارة الأكاديمية والهيكل التنظيمي",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

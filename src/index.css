@@ -1,0 +1,96 @@
+@import "tailwindcss";
+
+@layer utilities {
+  .bg-gold-gradient {
+    background: linear-gradient(135deg, #fce088 0%, #d4af37 50%, #8a6d1c 100%);
+  }
+
+  .text-gold-gradient {
+    background: linear-gradient(135deg, #fff3c4 0%, #ffd700 40%, #d4af37 70%, #aa820a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .text-gold-light {
+    color: #e6c875;
+  }
+
+  .border-gold {
+    border-color: rgba(212, 175, 55, 0.35);
+  }
+
+  .border-gold-glow {
+    border-color: rgba(212, 175, 55, 0.6);
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.15);
+  }
+
+  .gold-shadow {
+    box-shadow: 0 0 25px rgba(212, 175, 55, 0.2);
+  }
+
+  .gold-card {
+    background: linear-gradient(180deg, rgba(16, 21, 30, 0.85) 0%, rgba(10, 13, 19, 0.95) 100%);
+    border: 1px solid rgba(212, 175, 55, 0.25);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .gold-card:hover {
+    border-color: rgba(255, 215, 0, 0.6);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+    transform: translateY(-2px);
+  }
+
+  .gold-btn {
+    background: linear-gradient(180deg, rgba(20, 16, 8, 0.9) 0%, rgba(10, 8, 4, 0.95) 100%);
+    border: 1px solid rgba(212, 175, 55, 0.6);
+    color: #fce088;
+    transition: all 0.3s ease;
+  }
+
+  .gold-btn:hover {
+    background: linear-gradient(180deg, rgba(212, 175, 55, 0.2) 0%, rgba(138, 109, 28, 0.3) 100%);
+    border-color: #ffd700;
+    color: #ffffff;
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #080b11;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2a220d;
+  border-radius: 4px;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #4a3b18;
+}
+
+/* Police beacon pulse */
+@keyframes beacon-blue {
+  0%, 100% { opacity: 0.2; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.1); }
+}
+
+@keyframes beacon-red {
+  0%, 100% { opacity: 0.6; transform: scale(1.1); }
+  50% { opacity: 0.2; transform: scale(1); }
+}
+
+.animate-beacon-blue {
+  animation: beacon-blue 2s infinite ease-in-out;
+}
+
+.animate-beacon-red {
+  animation: beacon-red 2s infinite ease-in-out;
+}
+
